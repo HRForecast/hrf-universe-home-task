@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  postgres:
+    container_name: hrf_universe_postgres
+    image: postgres:13.4
+    shm_size: 1g
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: home_task
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adm1n_password
+    ports:
+      - 5432:5432

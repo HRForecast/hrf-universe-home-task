@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "hrf-universe-home-task"
+version = "0.1.0"
+description = ""
+authors = ["Dmytro Kostochko <dmytro.kostochko@hrforecast.de>"]
+readme = "README.md"
+packages = [{include = "hrf_universe_home_task"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.94.0"
+psycopg2 = "^2.9.5"
+sqlalchemy = "<1.4.10"
+alembic = "^1.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
