@@ -22,12 +22,19 @@ def upgrade() -> None:
     dir_name = os.path.dirname(__file__)
 
     file_name = os.path.join(dir_name, '/tmp/data/standard_job_family.csv')
-    op.execute(f"COPY public.standard_job_family FROM '{file_name}' WITH CSV;", execution_options=None)
+    op.execute(f"COPY public.standard_job_family FROM '{file_name}' WITH (FORMAT CSV, HEADER TRUE);", execution_options=None)
 
     file_name = os.path.join(dir_name, '/tmp/data/standard_job.csv')
-    op.execute(f"COPY public.standard_job FROM '{file_name}' WITH CSV;", execution_options=None)
+    op.execute(f"COPY public.standard_job FROM '{file_name}' WITH (FORMAT CSV, HEADER TRUE);", execution_options=None)
+
+    file_name = os.path.join(dir_name, '/tmp/data/job_posting.csv')
+    op.execute(
+        f"""COPY public.job_posting FROM '{file_name}' WITH (FORMAT CSV, HEADER TRUE);""",
+        execution_options=None
+    )
 
 
 def downgrade() -> None:
+    op.execute("DELETE FROM public.job_posting")
     op.execute("DELETE FROM public.standard_job")
     op.execute("DELETE FROM public.standard_job_family")
