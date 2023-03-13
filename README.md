@@ -10,13 +10,13 @@ We have millions of job postings crawled from the internet and want to calculate
 Job posting structure:
 
 ```python
-    @dataclass
-    class JobPosting:
-        id: str
-        title: str
-        standard_job_id: str
-        country_code: Optional[str] = None
-        days_to_hire: Optional[int] = None
+@dataclass
+class JobPosting:
+    id: str
+    title: str
+    standard_job_id: str
+    country_code: Optional[str] = None
+    days_to_hire: Optional[int] = None
 ```
 
 - `standard_job_id` -- all job postings are assigned to a standard job. It is a job title normalized to a common form,
