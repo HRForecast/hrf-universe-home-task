@@ -1,3 +1,4 @@
+from _decimal import Decimal
 from dataclasses import dataclass
 from typing import Optional
 
@@ -6,6 +7,7 @@ from sqlalchemy import (
     Integer,
     String,
     Table,
+    DECIMAL,
 )
 from sqlalchemy.orm import registry
 
@@ -67,3 +69,28 @@ class JobPosting(Model):
     standard_job_id: str
     country_code: Optional[str] = None
     days_to_hire: Optional[int] = None
+
+
+@mapper_registry.mapped
+@dataclass
+class HireStatistic(Model):
+    __table__ = Table(
+        "hire_statistic",
+        mapper_registry.metadata,
+        Column("id", String, nullable=False, primary_key=True),
+        Column("minimum_days_to_hire", DECIMAL, nullable=False),
+        Column("average_days_to_hire", DECIMAL, nullable=False),
+        Column("maximum_days_to_hire", DECIMAL, nullable=False),
+        Column("job_postings_number", Integer, nullable=False),
+        Column("standard_job_id", String, nullable=False),
+        Column("country_code", String, nullable=True),
+        schema="public",
+    )
+
+    id: str
+    minimum_days_to_hire: Decimal
+    average_days_to_hire: Decimal
+    maximum_days_to_hire: Decimal
+    job_postings_number: int
+    standard_job_id: str
+    country_code: Optional[str] = None
