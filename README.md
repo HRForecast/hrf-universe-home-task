@@ -46,7 +46,7 @@ So we want to cut lowest and highest percentiles of `days_to_hire` before calcul
 
 - Minimum days to hire is 10 percentile.
 - Maximum days to hire is 90 percentile.
-- Average days to hire is an average of remaining values after cutting 10 and 90 percentiles.
+- Average days to hire is an average of **remaining values after cutting 10 and 90 percentiles**.
 - Number of job postings is a number of rows used to calculate an average.
 - Do not save resulted row if a number of job postings is less than 5. 
   Allow passing this threshold as a parameter.
